@@ -25,17 +25,13 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               <form
                 name="assoyah-contact"
                 method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
+                
+                
                 action={`/${locale}/contact/thank-you`}
                 className="space-y-8"
-              >
-                <input type="hidden" name="form-name" value="assoyah-contact" />
-                <p className="hidden">
-                  <label>
-                    Don&apos;t fill this out: <input name="bot-field" />
-                  </label>
-                </p>
+              <
+                
+                
 
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                   <div>
