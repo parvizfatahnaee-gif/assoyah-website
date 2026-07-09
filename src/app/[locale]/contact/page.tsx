@@ -123,5 +123,5 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
         </div>
       </section>
     </>
-  );
+  )
 }
