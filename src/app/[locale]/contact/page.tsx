@@ -25,14 +25,9 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               <form
                 name="assoyah-contact"
                 method="POST"
-                
-                
                 action={`/${locale}/contact/thank-you`}
                 className="space-y-8"
-              
-                
-                
-
+              >
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                   <div>
                     <label className={labelClass} htmlFor="name">
@@ -123,5 +118,5 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
         </div>
       </section>
     </>
-  )
+  );
 }
