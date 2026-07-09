@@ -7,5 +7,5 @@ const dictionaries = { fr, en };
 export type Dictionary = typeof fr;
 
 export function getDictionary(locale: Locale): Dictionary {
-  return dictionaries[locale] ?? dictionaries.fr;
+  return (dictionaries[locale] ?? dictionaries.fr) as Dictionary;
 }
