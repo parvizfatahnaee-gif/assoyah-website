@@ -29,7 +29,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
                 
                 action={`/${locale}/contact/thank-you`}
                 className="space-y-8"
-              <
+              
                 
                 
 
