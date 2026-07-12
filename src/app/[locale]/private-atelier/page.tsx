@@ -6,6 +6,7 @@ import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
+import FaqAccordion from "@/components/FaqAccordion";
 
 export default function PrivateAtelierPage({
   params,
@@ -14,7 +15,7 @@ export default function PrivateAtelierPage({
 }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { privateAtelier, common } = dict;
+  const { privateAtelier, common, faq } = dict;
 
   const forWho = [
     privateAtelier.forWho1,
@@ -97,6 +98,8 @@ export default function PrivateAtelierPage({
           </div>
         </div>
       </section>
+
+      <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
 
       <CtaBanner
         title={privateAtelier.ctaTitle}
