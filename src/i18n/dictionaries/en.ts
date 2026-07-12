@@ -278,6 +278,57 @@ const en = {
     detailsTitle: "ASSOYAH SARL",
     detailsLocation: "Abidjan, Côte d'Ivoire",
   },
+  requestCenter: {
+    eyebrow: "Request Center",
+    title: "How would you like to collaborate?",
+    intro:
+      "Choose the nature of your request. Our team will get back to you to build the next step together.",
+    backToCenter: "Back to the Request Center",
+    formIntro:
+      "This request will be activated soon. In the meantime, tell us about your project and we will reach out to you personally.",
+    personalInfoLabel: "Personal Information",
+    companyInfoLabel: "Company Information",
+    projectDescLabel: "Project Description",
+    fileUploadLabel: "Documents or References (coming soon)",
+    contactMethodLabel: "Preferred Contact Method",
+    comingSoonNote: "Interactive form — available in a future phase.",
+    ctaLabel: "Contact us directly",
+    items: [
+      { slug: "consultation", title: "Request a Consultation", body: "A first conversation to understand your vision and needs." },
+      { slug: "custom-design", title: "Request Custom Design", body: "A unique piece, designed and made for you." },
+      { slug: "private-atelier", title: "Request Private Atelier", body: "Exclusive support, from sketch to delivery." },
+      { slug: "corporate-uniform", title: "Request Corporate Uniform", body: "A clothing identity for your company." },
+      { slug: "manufacturing", title: "Request Manufacturing Partnership", body: "Production capability for your brand." },
+      { slug: "partnership", title: "Request Strategic Partnership", body: "Let's build a long-term collaboration." },
+      { slug: "meeting", title: "Request a Meeting", body: "Let's schedule an appointment with our team." },
+      { slug: "mou", title: "Request an MOU", body: "Let's formalise the basis of a collaboration." },
+      { slug: "quotation", title: "Request a Quotation", body: "Receive an estimate tailored to your project." },
+      { slug: "collaboration", title: "Request Creative Collaboration", body: "A shared project, a shared vision." },
+    ],
+  },
+  faq: {
+    eyebrow: "Frequently Asked Questions",
+    title: "What we're often asked",
+    items: [
+      { q: "What does the design process look like?", a: "From the first consultation to final delivery, every step is designed with you — detailed content coming soon." },
+      { q: "What is your manufacturing capacity?", a: "ASSOYAH has a production capability suited to private orders as well as corporate volumes — details coming soon." },
+      { q: "Can an order be fully customised?", a: "Yes, every project can be adapted to your fabric, cut and finish preferences — details coming soon." },
+      { q: "What are the delivery timelines?", a: "Timelines vary depending on the nature of the project — precise information coming soon." },
+      { q: "How do I start a collaboration with ASSOYAH?", a: "The Request Center lets you easily initiate the type of collaboration you're seeking." },
+    ],
+  },
+  trust: {
+    eyebrow: "Trust & Standards",
+    title: "Standards built to last",
+    items: [
+      "Certifications",
+      "Corporate Clients",
+      "Testimonials",
+      "Production Standards",
+      "Quality Assurance",
+      "International Partnerships",
+    ],
+  },
 } as const;
 
 export default en;

@@ -279,6 +279,57 @@ const fr = {
     detailsTitle: "ASSOYAH SARL",
     detailsLocation: "Abidjan, Côte d'Ivoire",
   },
+  requestCenter: {
+    eyebrow: "Centre de Demandes",
+    title: "Comment souhaitez-vous collaborer ?",
+    intro:
+      "Choisissez la nature de votre demande. Notre équipe reviendra vers vous pour construire ensemble la prochaine étape.",
+    backToCenter: "Retour au Centre de Demandes",
+    formIntro:
+      "Cette demande sera bientôt activée. En attendant, décrivez-nous votre projet et nous vous recontacterons personnellement.",
+    personalInfoLabel: "Informations personnelles",
+    companyInfoLabel: "Informations sur l'entreprise",
+    projectDescLabel: "Description du projet",
+    fileUploadLabel: "Documents ou références (à venir)",
+    contactMethodLabel: "Moyen de contact préféré",
+    comingSoonNote: "Formulaire interactif — disponible dans une prochaine phase.",
+    ctaLabel: "Nous contacter directement",
+    items: [
+      { slug: "consultation", title: "Demander une Consultation", body: "Un premier échange pour comprendre votre vision et vos besoins." },
+      { slug: "custom-design", title: "Demander une Création Sur Mesure", body: "Une pièce unique, pensée et réalisée pour vous." },
+      { slug: "private-atelier", title: "Demander l'Atelier Privé", body: "Un accompagnement exclusif, de l'esquisse à la livraison." },
+      { slug: "corporate-uniform", title: "Demander un Programme Uniforme", body: "Une identité vestimentaire pour votre entreprise." },
+      { slug: "manufacturing", title: "Demander un Partenariat de Manufacture", body: "Une capacité de production pour votre marque." },
+      { slug: "partnership", title: "Demander un Partenariat Stratégique", body: "Construisons une collaboration à long terme." },
+      { slug: "meeting", title: "Demander une Rencontre", body: "Planifions un rendez-vous avec notre équipe." },
+      { slug: "mou", title: "Demander un Protocole d'Accord", body: "Formalisons les bases d'une collaboration." },
+      { slug: "quotation", title: "Demander un Devis", body: "Recevez une estimation adaptée à votre projet." },
+      { slug: "collaboration", title: "Demander une Collaboration Créative", body: "Un projet commun, une vision partagée." },
+    ],
+  },
+  faq: {
+    eyebrow: "Questions Fréquentes",
+    title: "Ce que l'on nous demande souvent",
+    items: [
+      { q: "Comment se déroule le processus de création ?", a: "De la consultation initiale à la livraison finale, chaque étape est pensée avec vous — contenu détaillé à venir." },
+      { q: "Quelle est votre capacité de fabrication ?", a: "ASSOYAH dispose d'une capacité de production adaptée aux commandes privées comme aux volumes d'entreprise — détails à venir." },
+      { q: "Peut-on personnaliser entièrement une commande ?", a: "Oui, chaque projet peut être adapté à vos préférences de tissu, de coupe et de finition — détails à venir." },
+      { q: "Quels sont les délais de livraison ?", a: "Les délais varient selon la nature du projet — informations précises à venir." },
+      { q: "Comment démarrer une collaboration avec ASSOYAH ?", a: "Le Centre de Demandes vous permet d'initier facilement le type de collaboration souhaité." },
+    ],
+  },
+  trust: {
+    eyebrow: "Confiance & Exigence",
+    title: "Des standards pensés pour durer",
+    items: [
+      "Certifications",
+      "Clients Corporate",
+      "Témoignages",
+      "Standards de Production",
+      "Assurance Qualité",
+      "Partenariats Internationaux",
+    ],
+  },
 } as const;
 
 export default fr;
