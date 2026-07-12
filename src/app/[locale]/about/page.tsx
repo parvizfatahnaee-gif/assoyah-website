@@ -5,6 +5,7 @@ import Eyebrow from "@/components/Eyebrow";
 import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
+import CtaBanner from "@/components/CtaBanner";
 
 export default function AboutPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
@@ -103,6 +104,13 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
           </div>
         </div>
       </section>
+
+      <CtaBanner
+        title={about.ctaTitle}
+        body={about.ctaBody}
+        buttonLabel={dict.common.exploreAtelier}
+        href={`/${locale}/private-atelier`}
+      />
     </>
   );
 }
