@@ -1,8 +1,13 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/getDictionary";
 import LanguageSwitch from "./LanguageSwitch";
 import MobileNav from "./MobileNav";
+import Button from "./Button";
 
 export default function Header({
   locale,
@@ -11,6 +16,16 @@ export default function Header({
   locale: Locale;
   dict: Dictionary;
 }) {
+  const pathname = usePathname() || "";
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const links: { href: string; label: string }[] = [
     { href: `/${locale}/about`, label: dict.nav.about },
     { href: `/${locale}/fashion`, label: dict.nav.fashion },
@@ -22,8 +37,18 @@ export default function Header({
   ];
 
   return (
-    <header className="sticky top-0 z-30 border-b border-charcoal/10 bg-ivory/90 backdrop-blur">
-      <div className="mx-auto flex max-w-content items-center justify-between px-6 py-5 md:px-10">
+    <header
+      className={`sticky top-0 z-30 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-charcoal/10 bg-ivory py-0 shadow-[0_1px_0_0_rgba(0,0,0,0.04)]"
+          : "border-transparent bg-ivory/90 backdrop-blur"
+      }`}
+    >
+      <div
+        className={`mx-auto flex max-w-content items-center justify-between px-6 transition-all duration-300 md:px-10 ${
+          scrolled ? "py-3.5" : "py-5"
+        }`}
+      >
         <Link
           href={`/${locale}`}
           className="font-display text-2xl tracking-wider2 text-charcoal"
@@ -31,26 +56,31 @@ export default function Header({
           ASSOYAH
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-body text-[13px] uppercase tracking-wider2 text-charcoal/75 transition-colors hover:text-charcoal"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+          {links.map((link) => {
+            const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`relative font-body text-[13px] uppercase tracking-wider2 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-terracotta after:transition-all ${
+                  isActive
+                    ? "text-charcoal after:w-full"
+                    : "text-charcoal/75 after:w-0 hover:text-charcoal hover:after:w-full"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
           <LanguageSwitch locale={locale} />
-          <Link
-            href={`/${locale}/contact`}
-            className="rounded-full bg-charcoal px-5 py-2 font-body text-[13px] uppercase tracking-wider2 text-ivory transition-colors hover:bg-terracotta"
-          >
-            {dict.nav.requestProject}
-          </Link>
+          <Button href={`/${locale}/contact`} variant="primary">
+            {dict.nav.requestConsultation}
+          </Button>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
