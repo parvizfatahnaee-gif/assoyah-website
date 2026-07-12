@@ -7,11 +7,12 @@ import FadeIn from "@/components/FadeIn";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import EditorialRow from "@/components/EditorialRow";
 import Button from "@/components/Button";
+import TrustBadges from "@/components/TrustBadges";
 
 export default function HomePage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { home, common, nav, fashion, africanHeritage, privateAtelier, uniforms, manufacturing } = dict;
+  const { home, common, nav, fashion, africanHeritage, privateAtelier, uniforms, manufacturing, trust } = dict;
 
   const pillars = [
     { title: home.pillar1Title, body: home.pillar1Body },
@@ -285,6 +286,8 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
         </div>
       </section>
+
+      <TrustBadges eyebrow={trust.eyebrow} title={trust.title} items={trust.items} />
 
       {/* AUDIENCES */}
       <section className="mx-auto max-w-content px-6 py-20 md:px-10 md:py-28">
