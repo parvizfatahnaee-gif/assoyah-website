@@ -34,6 +34,7 @@ export default function Header({
     { href: `/${locale}/uniforms`, label: dict.nav.uniforms },
     { href: `/${locale}/manufacturing`, label: dict.nav.manufacturing },
     { href: `/${locale}/journal`, label: dict.nav.journal },
+    { href: `/${locale}/request`, label: dict.requestCenter.eyebrow },
   ];
 
   return (

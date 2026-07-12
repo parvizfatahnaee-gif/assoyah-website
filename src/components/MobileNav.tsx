@@ -28,6 +28,7 @@ export default function MobileNav({
     { href: `/${locale}/uniforms`, label: dict.nav.uniforms },
     { href: `/${locale}/manufacturing`, label: dict.nav.manufacturing },
     { href: `/${locale}/journal`, label: dict.nav.journal },
+    { href: `/${locale}/request`, label: dict.requestCenter.eyebrow },
     { href: `/${locale}/contact`, label: dict.nav.contact },
   ];
 
