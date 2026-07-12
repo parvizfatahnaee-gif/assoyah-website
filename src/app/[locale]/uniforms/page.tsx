@@ -6,11 +6,12 @@ import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
+import FaqAccordion from "@/components/FaqAccordion";
 
 export default function UniformsPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { uniforms, common } = dict;
+  const { uniforms, common, faq } = dict;
 
   const sectors = [
     uniforms.sector1,
@@ -90,6 +91,8 @@ export default function UniformsPage({ params }: { params: { locale: string } })
           </div>
         </div>
       </section>
+
+      <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
 
       <CtaBanner
         title={uniforms.ctaTitle}
