@@ -6,6 +6,8 @@ import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
+import FaqAccordion from "@/components/FaqAccordion";
+import TrustBadges from "@/components/TrustBadges";
 
 export default function ManufacturingPage({
   params,
@@ -14,7 +16,7 @@ export default function ManufacturingPage({
 }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { manufacturing, common } = dict;
+  const { manufacturing, common, faq, trust } = dict;
 
   const capabilities = [
     { title: manufacturing.capability1Title, body: manufacturing.capability1Body },
@@ -77,6 +79,10 @@ export default function ManufacturingPage({
           </div>
         </div>
       </section>
+
+      <TrustBadges eyebrow={trust.eyebrow} title={trust.title} items={trust.items} />
+
+      <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
 
       <CtaBanner
         title={manufacturing.ctaTitle}
