@@ -58,6 +58,10 @@ const en = {
     visionTitle: "Haute couture born of complete craftsmanship",
     visionBody:
       "From sketch to finished garment, ASSOYAH oversees every stage of creation: pattern-making, cutting, sewing, finishing and quality control. This complete mastery lets us serve both the client seeking an exceptional piece and the enterprise seeking a large-scale clothing programme.",
+    manifestoEyebrow: "Manifesto",
+    manifestoQuote: "We do not follow fashion. We weave identity.",
+    manifestoBody:
+      "ASSOYAH exists at the crossing of two worlds: the creative freedom of a couture house and the rigour of a manufacture. Every piece carries an intention — to reveal a contemporary African elegance, without compromise on quality, without concession on standards.",
     pillarsEyebrow: "What Sets Us Apart",
     pillarsTitle: "Five commitments, one house",
     pillar1Title: "Artistic Direction",
@@ -92,6 +96,25 @@ const en = {
     ctaTitle: "Have a project in mind?",
     ctaBody:
       "Whether it's a private creation, a uniform programme, or a production partnership, our team is with you from the very first sketch.",
+    whyEyebrow: "Why ASSOYAH",
+    whyTitle: "Trust is built, one piece at a time",
+    why1Title: "Bespoke Design",
+    why1Body: "Every project, private or corporate, is designed as a unique piece.",
+    why2Title: "Professional Team",
+    why2Body: "Skilled artisans and a demanding artistic direction.",
+    why3Title: "Premium Materials",
+    why3Body: "A rigorous selection of fabrics and supplies.",
+    why4Title: "Modern Manufacturing",
+    why4Body: "Equipment and processes aligned with international standards.",
+    why5Title: "African Creativity",
+    why5Body: "A living heritage, reinterpreted with boldness.",
+    why6Title: "International Vision",
+    why6Body: "An ambition that reaches beyond Abidjan's borders.",
+    journalEyebrow: "Journal",
+    journalTitle: "Stories from the house",
+    journalBody:
+      "Fashion, behind-the-scenes at the atelier, African heritage and corporate projects — the ASSOYAH journal opens soon.",
+    journalCta: "Discover the journal",
   },
   about: {
     heroEyebrow: "The House",
@@ -119,6 +142,8 @@ const en = {
     value3Body: "Contemporary African fashion — never an imitation, always a signature.",
     value4Title: "Professional Trust",
     value4Body: "An official structure, rigorously managed, in service of demanding partners.",
+    ctaTitle: "Experience ASSOYAH",
+    ctaBody: "Discover our private atelier or tell us about your project, whatever it may be.",
   },
   fashion: {
     heroEyebrow: "Collections",
