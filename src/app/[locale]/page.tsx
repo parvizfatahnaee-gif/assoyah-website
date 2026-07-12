@@ -5,11 +5,13 @@ import Eyebrow from "@/components/Eyebrow";
 import StitchDivider from "@/components/StitchDivider";
 import FadeIn from "@/components/FadeIn";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
+import EditorialRow from "@/components/EditorialRow";
+import Button from "@/components/Button";
 
 export default function HomePage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { home, common, nav } = dict;
+  const { home, common, nav, fashion, africanHeritage, privateAtelier, uniforms, manufacturing } = dict;
 
   const pillars = [
     { title: home.pillar1Title, body: home.pillar1Body },
@@ -17,6 +19,15 @@ export default function HomePage({ params }: { params: { locale: string } }) {
     { title: home.pillar3Title, body: home.pillar3Body },
     { title: home.pillar4Title, body: home.pillar4Body },
     { title: home.pillar5Title, body: home.pillar5Body },
+  ];
+
+  const whyItems = [
+    { title: home.why1Title, body: home.why1Body },
+    { title: home.why2Title, body: home.why2Body },
+    { title: home.why3Title, body: home.why3Body },
+    { title: home.why4Title, body: home.why4Body },
+    { title: home.why5Title, body: home.why5Body },
+    { title: home.why6Title, body: home.why6Body },
   ];
 
   const audiences = [
@@ -28,7 +39,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
   return (
     <>
-      {/* HERO */}
+      {/* EDITORIAL HERO */}
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-content grid-cols-1 items-center gap-10 px-6 pb-16 pt-14 md:px-10 md:pb-24 md:pt-20 lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-6 lg:pr-6">
@@ -49,18 +60,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             </FadeIn>
             <FadeIn delay={0.24}>
               <div className="mt-9 flex flex-wrap gap-4">
-                <Link
-                  href={`/${locale}/fashion`}
-                  className="rounded-full bg-charcoal px-7 py-3 font-body text-[13px] uppercase tracking-wider2 text-ivory transition-colors hover:bg-terracotta"
-                >
+                <Button href={`/${locale}/fashion`} variant="primary">
                   {common.discoverCollections}
-                </Link>
-                <Link
-                  href={`/${locale}/contact`}
-                  className="rounded-full border border-charcoal/25 px-7 py-3 font-body text-[13px] uppercase tracking-wider2 text-charcoal transition-colors hover:border-charcoal"
-                >
+                </Button>
+                <Button href={`/${locale}/contact`} variant="outline">
                   {common.requestProject}
-                </Link>
+                </Button>
               </div>
             </FadeIn>
           </div>
@@ -94,6 +99,21 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         <StitchDivider className="pb-14 md:pb-20" />
       </section>
 
+      {/* BRAND MANIFESTO */}
+      <section className="mx-auto max-w-content px-6 pb-20 text-center md:px-10 md:pb-28">
+        <FadeIn>
+          <Eyebrow>{home.manifestoEyebrow}</Eyebrow>
+          <p className="mx-auto mt-6 max-w-3xl font-display text-3xl italic leading-snug text-charcoal md:text-4xl">
+            “{home.manifestoQuote}”
+          </p>
+          <p className="mx-auto mt-7 max-w-xl font-body text-[15px] leading-relaxed text-stone">
+            {home.manifestoBody}
+          </p>
+        </FadeIn>
+      </section>
+
+      <StitchDivider className="pb-20 md:pb-28" />
+
       {/* VISION */}
       <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
@@ -114,8 +134,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </div>
         </div>
       </section>
-
-      <StitchDivider className="pb-20 md:pb-28" />
 
       {/* PILLARS */}
       <section className="bg-beige/60 py-20 md:py-28">
@@ -144,8 +162,70 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
+      {/* SIGNATURE COLLECTIONS */}
+      <EditorialRow
+        eyebrow={home.pillarsEyebrow}
+        title={fashion.heroTitle}
+        body={fashion.heroSub}
+        imagePath="/images/fashion/look-01.jpg"
+        imageLabel="Collection Signature"
+        ctaLabel={common.discoverCollections}
+        ctaHref={`/${locale}/fashion`}
+      />
+
+      {/* AFRICAN HERITAGE */}
+      <EditorialRow
+        eyebrow={africanHeritage.heroEyebrow}
+        title={africanHeritage.heroTitle}
+        body={africanHeritage.heroSub}
+        imagePath="/images/african-heritage/hero.jpg"
+        imageLabel="Héritage Africain"
+        tone="ochre"
+        reverse
+        ctaLabel={common.learnMore}
+        ctaHref={`/${locale}/african-heritage`}
+      />
+
+      {/* PRIVATE ATELIER */}
+      <EditorialRow
+        eyebrow={privateAtelier.heroEyebrow}
+        title={privateAtelier.heroTitle}
+        body={privateAtelier.heroSub}
+        imagePath="/images/workshop.jpg"
+        imageLabel="Atelier Privé"
+        tone="charcoal"
+        ctaLabel={common.exploreAtelier}
+        ctaHref={`/${locale}/private-atelier`}
+      />
+
+      {/* CORPORATE UNIFORMS */}
+      <EditorialRow
+        eyebrow={uniforms.heroEyebrow}
+        title={uniforms.heroTitle}
+        body={uniforms.heroSub}
+        imagePath="/images/uniforms/hero.jpg"
+        imageLabel="Programme Uniformes"
+        reverse
+        ctaLabel={common.viewUniforms}
+        ctaHref={`/${locale}/uniforms`}
+      />
+
+      {/* MANUFACTURING EXCELLENCE */}
+      <EditorialRow
+        eyebrow={manufacturing.heroEyebrow}
+        title={manufacturing.heroTitle}
+        body={manufacturing.heroSub}
+        imagePath="/images/manufacturing/hero.jpg"
+        imageLabel="Manufacture ASSOYAH"
+        tone="charcoal"
+        ctaLabel={common.learnMore}
+        ctaHref={`/${locale}/manufacturing`}
+      />
+
+      <StitchDivider className="pb-20 md:pb-28" />
+
       {/* CREATIVE DIRECTOR */}
-      <section className="mx-auto max-w-content px-6 py-20 md:px-10 md:py-28">
+      <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <FadeIn>
@@ -182,8 +262,32 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
       <StitchDivider className="pb-20 md:pb-28" />
 
+      {/* WHY ASSOYAH */}
+      <section className="bg-beige/60 py-20 md:py-28">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <FadeIn className="max-w-xl">
+            <Eyebrow>{home.whyEyebrow}</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl leading-tight text-charcoal md:text-4xl">
+              {home.whyTitle}
+            </h2>
+          </FadeIn>
+          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+            {whyItems.map((item, i) => (
+              <FadeIn key={item.title} delay={0.04 * i}>
+                <div className="border-t border-charcoal/15 pt-5">
+                  <h3 className="font-display text-lg text-charcoal">{item.title}</h3>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-stone">
+                    {item.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* AUDIENCES */}
-      <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
+      <section className="mx-auto max-w-content px-6 py-20 md:px-10 md:py-28">
         <FadeIn className="max-w-xl">
           <Eyebrow>{home.audiencesEyebrow}</Eyebrow>
         </FadeIn>
@@ -201,8 +305,29 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </div>
       </section>
 
+      <StitchDivider className="pb-20 md:pb-28" />
+
+      {/* JOURNAL PREVIEW */}
+      <section className="mx-auto max-w-content px-6 pb-24 text-center md:px-10 md:pb-32">
+        <FadeIn>
+          <Eyebrow>{home.journalEyebrow}</Eyebrow>
+          <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
+            {home.journalTitle}
+          </h2>
+          <p className="mx-auto mt-5 max-w-lg font-body text-sm leading-relaxed text-stone">
+            {home.journalBody}
+          </p>
+          <Link
+            href={`/${locale}/journal`}
+            className="mt-8 inline-block font-body text-[13px] uppercase tracking-wider2 text-charcoal underline underline-offset-4 hover:text-terracotta"
+          >
+            {home.journalCta}
+          </Link>
+        </FadeIn>
+      </section>
+
       {/* CTA */}
-      <section className="bg-charcoal py-20 text-ivory md:py-28">
+      <section className="bg-charcoal py-24 text-ivory md:py-32">
         <div className="mx-auto max-w-content px-6 text-center md:px-10">
           <FadeIn>
             <h2 className="font-display text-3xl leading-tight md:text-4xl">
@@ -212,18 +337,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               {home.ctaBody}
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-4">
-              <Link
-                href={`/${locale}/contact`}
-                className="rounded-full bg-ivory px-7 py-3 font-body text-[13px] uppercase tracking-wider2 text-charcoal transition-colors hover:bg-terracotta hover:text-ivory"
-              >
+              <Button href={`/${locale}/contact`} variant="secondary">
                 {nav.requestProject}
-              </Link>
-              <Link
-                href={`/${locale}/private-atelier`}
-                className="rounded-full border border-ivory/30 px-7 py-3 font-body text-[13px] uppercase tracking-wider2 text-ivory transition-colors hover:border-ivory"
-              >
+              </Button>
+              <Button href={`/${locale}/private-atelier`} variant="outlineLight">
                 {common.exploreAtelier}
-              </Link>
+              </Button>
             </div>
           </FadeIn>
         </div>
