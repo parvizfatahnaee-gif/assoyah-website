@@ -118,7 +118,6 @@ export default function Footer({
 
         <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-ivory/10 pt-8">
           {[
-            { label: dict.requestCenter.eyebrow, href: `/${locale}/request` },
             { label: dict.footer.legalTitle, href: "#" },
             { label: "Corporate Information", href: "#" },
             { label: "Resources", href: "#" },
