@@ -50,8 +50,14 @@ export default function LocaleLayout({
   return (
     <html lang={locale} className={`${cormorant.variable} ${manrope.variable}`}>
       <body className="font-body">
+        <a
+          href="#main-content"
+          className="skip-link fixed left-4 top-4 z-50 -translate-y-20 rounded-full bg-charcoal px-5 py-2.5 font-body text-[13px] uppercase tracking-wider2 text-ivory transition-transform focus:translate-y-0"
+        >
+          {locale === "fr" ? "Aller au contenu" : "Skip to content"}
+        </a>
         <Header locale={locale} dict={dict} />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer locale={locale} dict={dict} />
       </body>
     </html>
