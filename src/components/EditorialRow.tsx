@@ -30,17 +30,21 @@ export default function EditorialRow({
     <section className="mx-auto max-w-content px-6 py-16 md:px-10 md:py-24">
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
         <div
-          className={`lg:col-span-6 ${
+          className={`group lg:col-span-6 ${
             reverse ? "lg:order-2 lg:col-start-7" : ""
           }`}
         >
           <FadeIn>
-            <ImagePlaceholder
-              path={imagePath}
-              label={imageLabel}
-              ratio={imageRatio}
-              tone={tone}
-            />
+            <div className="overflow-hidden">
+              <div className="transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+                <ImagePlaceholder
+                  path={imagePath}
+                  label={imageLabel}
+                  ratio={imageRatio}
+                  tone={tone}
+                />
+              </div>
+            </div>
           </FadeIn>
         </div>
         <div className={`lg:col-span-5 ${reverse ? "lg:order-1" : "lg:col-start-8"}`}>
@@ -55,9 +59,12 @@ export default function EditorialRow({
             {ctaLabel && ctaHref && (
               <Link
                 href={ctaHref}
-                className="mt-8 inline-block font-body text-[13px] uppercase tracking-wider2 text-charcoal underline underline-offset-4 transition-colors hover:text-terracotta"
+                className="group/link mt-8 inline-flex items-center gap-2 font-body text-[13px] uppercase tracking-wider2 text-charcoal transition-colors hover:text-terracotta"
               >
                 {ctaLabel}
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">
+                  →
+                </span>
               </Link>
             )}
           </FadeIn>
