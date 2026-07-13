@@ -75,8 +75,11 @@ export default function RequestDetailPage({
               <div className="mt-10">
                 <Link
                   href={`/${locale}/request`}
-                  className="font-body text-[13px] uppercase tracking-wider2 text-stone underline underline-offset-4 hover:text-charcoal"
+                  className="group/link inline-flex items-center gap-2 font-body text-[13px] uppercase tracking-wider2 text-stone transition-colors hover:text-charcoal"
                 >
+                  <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:-translate-x-1">
+                    ←
+                  </span>
                   {requestCenter.backToCenter}
                 </Link>
               </div>
