@@ -252,9 +252,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
               </p>
               <Link
                 href={`/${locale}/about`}
-                className="mt-8 inline-block font-body text-[13px] uppercase tracking-wider2 text-charcoal underline underline-offset-4 hover:text-terracotta"
+                className="group/link mt-8 inline-flex items-center gap-2 font-body text-[13px] uppercase tracking-wider2 text-charcoal transition-colors hover:text-terracotta"
               >
                 {common.learnMore}
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">
+                  →
+                </span>
               </Link>
             </FadeIn>
           </div>
@@ -322,9 +325,12 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           </p>
           <Link
             href={`/${locale}/journal`}
-            className="mt-8 inline-block font-body text-[13px] uppercase tracking-wider2 text-charcoal underline underline-offset-4 hover:text-terracotta"
+            className="group/link mt-8 inline-flex items-center gap-2 font-body text-[13px] uppercase tracking-wider2 text-charcoal transition-colors hover:text-terracotta"
           >
             {home.journalCta}
+            <span aria-hidden="true" className="transition-transform duration-300 group-hover/link:translate-x-1">
+              →
+            </span>
           </Link>
         </FadeIn>
       </section>
