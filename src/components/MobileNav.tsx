@@ -136,10 +136,15 @@ export default function MobileNav({
                 {dict.footer.contactTitle}
               </p>
               <div className="mt-3 flex flex-col gap-1 font-body text-sm text-charcoal/80">
-                <a href="mailto:contact@assoyah.com" className="hover:text-terracotta">
-                  contact@assoyah.com
+                <a href={`mailto:${dict.company.email}`} className="hover:text-terracotta">
+                  {dict.company.email}
                 </a>
-                <a href="#" className="hover:text-terracotta">
+                <a
+                  href={`https://wa.me/${dict.company.whatsappHref}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-terracotta"
+                >
                   WhatsApp
                 </a>
               </div>

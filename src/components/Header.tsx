@@ -52,12 +52,12 @@ export default function Header({
       >
         <Link
           href={`/${locale}`}
-          className="font-display text-2xl tracking-wider2 text-charcoal"
+          className="shrink-0 font-display text-2xl tracking-wider2 text-charcoal"
         >
           ASSOYAH
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 xl:flex xl:gap-6" aria-label="Primary">
           {links.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -65,7 +65,7 @@ export default function Header({
                 key={link.href}
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`relative font-body text-[13px] uppercase tracking-wider2 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-terracotta after:transition-all ${
+                className={`relative whitespace-nowrap font-body text-[12.5px] uppercase tracking-wider2 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-px after:bg-terracotta after:transition-all ${
                   isActive
                     ? "text-charcoal after:w-full"
                     : "text-charcoal/75 after:w-0 hover:text-charcoal hover:after:w-full"
@@ -77,14 +77,14 @@ export default function Header({
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden shrink-0 items-center gap-4 xl:flex">
           <LanguageSwitch locale={locale} />
           <Button href={`/${locale}/contact`} variant="primary">
             {dict.nav.requestConsultation}
           </Button>
         </div>
 
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-3 xl:hidden">
           <LanguageSwitch locale={locale} />
           <MobileNav locale={locale} dict={dict} />
         </div>

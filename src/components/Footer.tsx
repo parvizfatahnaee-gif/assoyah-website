@@ -92,12 +92,20 @@ export default function Footer({
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 font-body text-sm text-ivory/55">{dict.footer.address}</p>
+              <p className="mt-6 font-body text-sm text-ivory/55">
+                {dict.company.addressLine1}, {dict.company.addressLine2}
+              </p>
               <a
-                href="mailto:contact@assoyah.com"
+                href={`mailto:${dict.company.email}`}
                 className="mt-1 block font-body text-sm text-ivory/75 hover:text-ivory"
               >
-                contact@assoyah.com
+                {dict.company.email}
+              </a>
+              <a
+                href={`tel:${dict.company.phoneHref}`}
+                className="mt-1 block font-body text-sm text-ivory/75 hover:text-ivory"
+              >
+                {dict.company.phone}
               </a>
             </div>
           </div>
@@ -119,11 +127,10 @@ export default function Footer({
         <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-ivory/10 pt-8">
           {[
             { label: dict.requestCenter.eyebrow, href: `/${locale}/request` },
-            { label: dict.footer.legalTitle, href: "#" },
-            { label: "Corporate Information", href: "#" },
-            { label: "Resources", href: "#" },
-            { label: "Careers", href: "#" },
-            { label: "Sustainability", href: "#" },
+            { label: dict.footer.legalTitle, href: `/${locale}/legal#notice` },
+            { label: dict.footer.privacyTitle, href: `/${locale}/legal#privacy` },
+            { label: dict.footer.termsTitle, href: `/${locale}/legal#terms` },
+            { label: dict.footer.corporateInfoLabel, href: `/${locale}/legal#company` },
           ].map((item) => (
             <Link
               key={item.label}
@@ -142,9 +149,9 @@ export default function Footer({
             © {year} {dict.common.entity} — {dict.footer.rights}
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-ivory">
+            <Link href={`/${locale}/legal#notice`} className="hover:text-ivory">
               {dict.footer.legalTitle}
-            </a>
+            </Link>
             <Link
               href="/fr"
               className={locale === "fr" ? "text-ivory" : "hover:text-ivory"}
