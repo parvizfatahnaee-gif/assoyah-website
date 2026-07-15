@@ -8,6 +8,7 @@ import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
 import FaqAccordion from "@/components/FaqAccordion";
+import TrustBadges from "@/components/TrustBadges";
 
 export async function generateMetadata({
   params,
@@ -17,47 +18,50 @@ export async function generateMetadata({
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
   return {
-    title: `${dict.uniforms.heroTitle} — ${dict.meta.siteName}`,
-    description: dict.uniforms.heroSub,
+    title: `${dict.manufacturing.heroTitle} — ${dict.meta.siteName}`,
+    description: dict.manufacturing.heroSub,
   };
 }
 
-export default function UniformsPage({ params }: { params: { locale: string } }) {
+export default function ManufacturingPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { uniforms, common, faq } = dict;
-
-  const sectors = [
-    uniforms.sector1,
-    uniforms.sector2,
-    uniforms.sector3,
-    uniforms.sector4,
-    uniforms.sector5,
-    uniforms.sector6,
-  ];
+  const { manufacturing, common, faq, trust } = dict;
 
   const capabilities = [
-    { title: uniforms.capability1Title, body: uniforms.capability1Body },
-    { title: uniforms.capability2Title, body: uniforms.capability2Body },
-    { title: uniforms.capability3Title, body: uniforms.capability3Body },
+    { title: manufacturing.capability1Title, body: manufacturing.capability1Body },
+    { title: manufacturing.capability2Title, body: manufacturing.capability2Body },
+    { title: manufacturing.capability3Title, body: manufacturing.capability3Body },
+    { title: manufacturing.capability4Title, body: manufacturing.capability4Body },
+    { title: manufacturing.capability5Title, body: manufacturing.capability5Body },
   ];
 
   return (
     <>
-      <PageHero eyebrow={uniforms.heroEyebrow} title={uniforms.heroTitle} sub={uniforms.heroSub} />
+      <PageHero
+        eyebrow={manufacturing.heroEyebrow}
+        title={manufacturing.heroTitle}
+        sub={manufacturing.heroSub}
+      />
 
       <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
         <FadeIn className="max-w-xl">
-          <Eyebrow>{uniforms.sectorsEyebrow}</Eyebrow>
+          <Eyebrow>{manufacturing.capabilitiesEyebrow}</Eyebrow>
         </FadeIn>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {sectors.map((sector) => (
-            <span
-              key={sector}
-              className="rounded-full border border-charcoal/20 px-5 py-2 font-body text-sm text-charcoal/80"
-            >
-              {sector}
-            </span>
+        <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
+          {capabilities.map((c) => (
+            <FadeIn key={c.title}>
+              <div className="border-t border-charcoal/15 pt-5">
+                <h3 className="font-display text-lg text-charcoal">{c.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-stone">
+                  {c.body}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>
@@ -69,48 +73,34 @@ export default function UniformsPage({ params }: { params: { locale: string } })
           <div className="lg:col-span-5">
             <FadeIn>
               <ImagePlaceholder
-                path="/images/uniforms/hero.jpg"
-                label="Programme Uniformes"
+                path="/images/manufacturing/hero.jpg"
+                label="Manufacture ASSOYAH"
                 ratio="aspect-[4/5]"
+                tone="charcoal"
               />
             </FadeIn>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <FadeIn delay={0.1}>
-              <Eyebrow>{uniforms.approachEyebrow}</Eyebrow>
+              <Eyebrow>{manufacturing.partnershipsEyebrow}</Eyebrow>
               <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
-                {uniforms.approachTitle}
+                {manufacturing.partnershipsTitle}
               </h2>
               <p className="mt-6 font-body text-[15px] leading-relaxed text-stone">
-                {uniforms.approachBody}
+                {manufacturing.partnershipsBody}
               </p>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <section className="bg-beige/60 py-20 md:py-28">
-        <div className="mx-auto max-w-content px-6 md:px-10">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3">
-            {capabilities.map((c, i) => (
-              <FadeIn key={c.title} delay={0.05 * i}>
-                <div className="border-t border-charcoal/15 pt-5">
-                  <h3 className="font-display text-xl text-charcoal">{c.title}</h3>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-stone">
-                    {c.body}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TrustBadges eyebrow={trust.eyebrow} title={trust.title} items={trust.items} />
 
       <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
 
       <CtaBanner
-        title={uniforms.ctaTitle}
-        body={uniforms.ctaBody}
+        title={manufacturing.ctaTitle}
+        body={manufacturing.ctaBody}
         buttonLabel={common.getInTouch}
         href={`/${locale}/contact`}
       />
