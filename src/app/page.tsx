@@ -17,96 +17,89 @@ export async function generateMetadata({
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
   return {
-    title: `${dict.privateAtelier.heroTitle} — ${dict.meta.siteName}`,
-    description: dict.privateAtelier.heroSub,
+    title: `${dict.uniforms.heroTitle} — ${dict.meta.siteName}`,
+    description: dict.uniforms.heroSub,
   };
 }
 
-export default function PrivateAtelierPage({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default function UniformsPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { privateAtelier, common, faq } = dict;
+  const { uniforms, common, faq } = dict;
 
-  const forWho = [
-    privateAtelier.forWho1,
-    privateAtelier.forWho2,
-    privateAtelier.forWho3,
-    privateAtelier.forWho4,
-    privateAtelier.forWho5,
+  const sectors = [
+    uniforms.sector1,
+    uniforms.sector2,
+    uniforms.sector3,
+    uniforms.sector4,
+    uniforms.sector5,
+    uniforms.sector6,
   ];
 
-  const steps = [
-    { title: privateAtelier.step1Title, body: privateAtelier.step1Body },
-    { title: privateAtelier.step2Title, body: privateAtelier.step2Body },
-    { title: privateAtelier.step3Title, body: privateAtelier.step3Body },
-    { title: privateAtelier.step4Title, body: privateAtelier.step4Body },
+  const capabilities = [
+    { title: uniforms.capability1Title, body: uniforms.capability1Body },
+    { title: uniforms.capability2Title, body: uniforms.capability2Body },
+    { title: uniforms.capability3Title, body: uniforms.capability3Body },
   ];
 
   return (
     <>
-      <PageHero
-        eyebrow={privateAtelier.heroEyebrow}
-        title={privateAtelier.heroTitle}
-        sub={privateAtelier.heroSub}
-      />
+      <PageHero eyebrow={uniforms.heroEyebrow} title={uniforms.heroTitle} sub={uniforms.heroSub} />
+
+      <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
+        <FadeIn className="max-w-xl">
+          <Eyebrow>{uniforms.sectorsEyebrow}</Eyebrow>
+        </FadeIn>
+        <div className="mt-8 flex flex-wrap gap-3">
+          {sectors.map((sector) => (
+            <span
+              key={sector}
+              className="rounded-full border border-charcoal/20 px-5 py-2 font-body text-sm text-charcoal/80"
+            >
+              {sector}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <StitchDivider className="pb-20 md:pb-28" />
 
       <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <FadeIn>
               <ImagePlaceholder
-                path="/images/workshop.jpg"
-                label="Atelier Privé"
+                path="/images/uniforms/hero.jpg"
+                label="Programme Uniformes"
                 ratio="aspect-[4/5]"
-                tone="charcoal"
               />
             </FadeIn>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <FadeIn delay={0.1}>
-              <Eyebrow>{privateAtelier.forWhoEyebrow}</Eyebrow>
-              <ul className="mt-6 space-y-4">
-                {forWho.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-4 border-b border-charcoal/12 pb-4 font-display text-xl text-charcoal"
-                  >
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <Eyebrow>{uniforms.approachEyebrow}</Eyebrow>
+              <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
+                {uniforms.approachTitle}
+              </h2>
+              <p className="mt-6 font-body text-[15px] leading-relaxed text-stone">
+                {uniforms.approachBody}
+              </p>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <StitchDivider className="pb-20 md:pb-28" />
-
       <section className="bg-beige/60 py-20 md:py-28">
         <div className="mx-auto max-w-content px-6 md:px-10">
-          <FadeIn className="max-w-xl">
-            <Eyebrow>{privateAtelier.processEyebrow}</Eyebrow>
-            <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
-              {privateAtelier.processTitle}
-            </h2>
-          </FadeIn>
-          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step, i) => (
-              <FadeIn key={step.title} delay={0.05 * i}>
-                <p className="font-display text-4xl text-terracotta/70">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-3 font-display text-lg text-charcoal">
-                  {step.title}
-                </h3>
-                <p className="mt-3 font-body text-sm leading-relaxed text-stone">
-                  {step.body}
-                </p>
+          <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-3">
+            {capabilities.map((c, i) => (
+              <FadeIn key={c.title} delay={0.05 * i}>
+                <div className="border-t border-charcoal/15 pt-5">
+                  <h3 className="font-display text-xl text-charcoal">{c.title}</h3>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-stone">
+                    {c.body}
+                  </p>
+                </div>
               </FadeIn>
             ))}
           </div>
@@ -116,9 +109,9 @@ export default function PrivateAtelierPage({
       <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
 
       <CtaBanner
-        title={privateAtelier.ctaTitle}
-        body={privateAtelier.ctaBody}
-        buttonLabel={common.requestProject}
+        title={uniforms.ctaTitle}
+        body={uniforms.ctaBody}
+        buttonLabel={common.getInTouch}
         href={`/${locale}/contact`}
       />
     </>
