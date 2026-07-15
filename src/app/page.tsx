@@ -16,58 +16,86 @@ export async function generateMetadata({
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
   return {
-    title: `${dict.fashion.heroTitle} — ${dict.meta.siteName}`,
-    description: dict.fashion.heroSub,
+    title: `${dict.africanHeritage.heroTitle} — ${dict.meta.siteName}`,
+    description: dict.africanHeritage.heroSub,
   };
 }
 
-export default function FashionPage({ params }: { params: { locale: string } }) {
+export default function AfricanHeritagePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { fashion, common } = dict;
+  const { africanHeritage, common } = dict;
+
+  const elements = [
+    africanHeritage.element1,
+    africanHeritage.element2,
+    africanHeritage.element3,
+    africanHeritage.element4,
+  ];
 
   return (
     <>
-      <PageHero eyebrow={fashion.heroEyebrow} title={fashion.heroTitle} sub={fashion.heroSub} />
-
-      <section className="mx-auto max-w-content px-6 pb-16 md:px-10">
-        <FadeIn>
-          <p className="max-w-2xl font-body text-[15px] leading-relaxed text-stone">
-            {fashion.intro}
-          </p>
-        </FadeIn>
-      </section>
+      <PageHero
+        eyebrow={africanHeritage.heroEyebrow}
+        title={africanHeritage.heroTitle}
+        sub={africanHeritage.heroSub}
+      />
 
       <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-          <ImagePlaceholder path="/images/fashion/look-01.jpg" label="Look 01" ratio="aspect-[3/4]" />
-          <ImagePlaceholder path="/images/fashion/look-02.jpg" label="Look 02" ratio="aspect-[3/4]" tone="charcoal" />
-          <ImagePlaceholder path="/images/fashion/look-03.jpg" label="Look 03" ratio="aspect-[3/4]" />
-          <ImagePlaceholder path="/images/fashion/look-04.jpg" label="Look 04" ratio="aspect-[3/4]" tone="ochre" />
-          <ImagePlaceholder path="/images/fashion/look-05.jpg" label="Look 05" ratio="aspect-[3/4]" />
-          <ImagePlaceholder path="/images/fashion/look-06.jpg" label="Look 06" ratio="aspect-[3/4]" tone="charcoal" />
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <FadeIn>
+              <ImagePlaceholder
+                path="/images/african-heritage/hero.jpg"
+                label="Collection Héritage"
+                ratio="aspect-[4/5]"
+                tone="ochre"
+              />
+            </FadeIn>
+          </div>
+          <div className="lg:col-span-5 lg:col-start-8">
+            <FadeIn delay={0.1}>
+              <Eyebrow>{africanHeritage.philosophyEyebrow}</Eyebrow>
+              <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
+                {africanHeritage.philosophyTitle}
+              </h2>
+              <p className="mt-6 font-body text-[15px] leading-relaxed text-stone">
+                {africanHeritage.philosophyBody}
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
       <StitchDivider className="pb-20 md:pb-28" />
 
-      <section className="mx-auto max-w-content px-6 pb-20 text-center md:px-10 md:pb-28">
-        <FadeIn>
-          <Eyebrow>{fashion.lookbookEyebrow}</Eyebrow>
-          <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
-            {fashion.lookbookTitle}
-          </h2>
-          <p className="mx-auto mt-5 max-w-lg font-body text-sm leading-relaxed text-stone">
-            {fashion.lookbookBody}
-          </p>
+      <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
+        <FadeIn className="max-w-xl">
+          <Eyebrow>{africanHeritage.elementsEyebrow}</Eyebrow>
         </FadeIn>
+        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {elements.map((el, i) => (
+            <FadeIn key={el} delay={0.05 * i}>
+              <div className="flex items-center gap-4 border-b border-charcoal/12 pb-5">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
+                <p className="font-body text-sm leading-relaxed text-charcoal/85">
+                  {el}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </section>
 
       <CtaBanner
-        title={fashion.ctaTitle}
-        body={fashion.ctaBody}
-        buttonLabel={common.getInTouch}
-        href={`/${locale}/contact`}
+        title={africanHeritage.ctaTitle}
+        body={africanHeritage.ctaBody}
+        buttonLabel={common.discoverCollections}
+        href={`/${locale}/fashion`}
       />
     </>
   );
