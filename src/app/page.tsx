@@ -7,6 +7,7 @@ import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
+import FaqAccordion from "@/components/FaqAccordion";
 
 export async function generateMetadata({
   params,
@@ -16,56 +17,69 @@ export async function generateMetadata({
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
   return {
-    title: `${dict.africanHeritage.heroTitle} — ${dict.meta.siteName}`,
-    description: dict.africanHeritage.heroSub,
+    title: `${dict.privateAtelier.heroTitle} — ${dict.meta.siteName}`,
+    description: dict.privateAtelier.heroSub,
   };
 }
 
-export default function AfricanHeritagePage({
+export default function PrivateAtelierPage({
   params,
 }: {
   params: { locale: string };
 }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { africanHeritage, common } = dict;
+  const { privateAtelier, common, faq } = dict;
 
-  const elements = [
-    africanHeritage.element1,
-    africanHeritage.element2,
-    africanHeritage.element3,
-    africanHeritage.element4,
+  const forWho = [
+    privateAtelier.forWho1,
+    privateAtelier.forWho2,
+    privateAtelier.forWho3,
+    privateAtelier.forWho4,
+    privateAtelier.forWho5,
+  ];
+
+  const steps = [
+    { title: privateAtelier.step1Title, body: privateAtelier.step1Body },
+    { title: privateAtelier.step2Title, body: privateAtelier.step2Body },
+    { title: privateAtelier.step3Title, body: privateAtelier.step3Body },
+    { title: privateAtelier.step4Title, body: privateAtelier.step4Body },
   ];
 
   return (
     <>
       <PageHero
-        eyebrow={africanHeritage.heroEyebrow}
-        title={africanHeritage.heroTitle}
-        sub={africanHeritage.heroSub}
+        eyebrow={privateAtelier.heroEyebrow}
+        title={privateAtelier.heroTitle}
+        sub={privateAtelier.heroSub}
       />
 
       <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-5">
             <FadeIn>
               <ImagePlaceholder
-                path="/images/african-heritage/hero.jpg"
-                label="Collection Héritage"
+                path="/images/workshop.jpg"
+                label="Atelier Privé"
                 ratio="aspect-[4/5]"
-                tone="ochre"
+                tone="charcoal"
               />
             </FadeIn>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8">
+          <div className="lg:col-span-6 lg:col-start-7">
             <FadeIn delay={0.1}>
-              <Eyebrow>{africanHeritage.philosophyEyebrow}</Eyebrow>
-              <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
-                {africanHeritage.philosophyTitle}
-              </h2>
-              <p className="mt-6 font-body text-[15px] leading-relaxed text-stone">
-                {africanHeritage.philosophyBody}
-              </p>
+              <Eyebrow>{privateAtelier.forWhoEyebrow}</Eyebrow>
+              <ul className="mt-6 space-y-4">
+                {forWho.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-4 border-b border-charcoal/12 pb-4 font-display text-xl text-charcoal"
+                  >
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </FadeIn>
           </div>
         </div>
@@ -73,29 +87,39 @@ export default function AfricanHeritagePage({
 
       <StitchDivider className="pb-20 md:pb-28" />
 
-      <section className="mx-auto max-w-content px-6 pb-20 md:px-10 md:pb-28">
-        <FadeIn className="max-w-xl">
-          <Eyebrow>{africanHeritage.elementsEyebrow}</Eyebrow>
-        </FadeIn>
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {elements.map((el, i) => (
-            <FadeIn key={el} delay={0.05 * i}>
-              <div className="flex items-center gap-4 border-b border-charcoal/12 pb-5">
-                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta" />
-                <p className="font-body text-sm leading-relaxed text-charcoal/85">
-                  {el}
+      <section className="bg-beige/60 py-20 md:py-28">
+        <div className="mx-auto max-w-content px-6 md:px-10">
+          <FadeIn className="max-w-xl">
+            <Eyebrow>{privateAtelier.processEyebrow}</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl text-charcoal md:text-4xl">
+              {privateAtelier.processTitle}
+            </h2>
+          </FadeIn>
+          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {steps.map((step, i) => (
+              <FadeIn key={step.title} delay={0.05 * i}>
+                <p className="font-display text-4xl text-terracotta/70">
+                  {String(i + 1).padStart(2, "0")}
                 </p>
-              </div>
-            </FadeIn>
-          ))}
+                <h3 className="mt-3 font-display text-lg text-charcoal">
+                  {step.title}
+                </h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-stone">
+                  {step.body}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
+      <FaqAccordion eyebrow={faq.eyebrow} title={faq.title} items={faq.items} />
+
       <CtaBanner
-        title={africanHeritage.ctaTitle}
-        body={africanHeritage.ctaBody}
-        buttonLabel={common.discoverCollections}
-        href={`/${locale}/fashion`}
+        title={privateAtelier.ctaTitle}
+        body={privateAtelier.ctaBody}
+        buttonLabel={common.requestProject}
+        href={`/${locale}/contact`}
       />
     </>
   );
