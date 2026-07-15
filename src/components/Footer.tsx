@@ -27,8 +27,6 @@ export default function Footer({
     { href: `/${locale}/contact`, label: dict.nav.contact },
   ];
 
-  const socialPlaceholders = ["Instagram", "LinkedIn", "Pinterest"];
-
   return (
     <footer className="bg-charcoal text-ivory">
       <div className="mx-auto max-w-content px-6 pb-10 pt-20 md:px-10 md:pt-28">
@@ -38,24 +36,6 @@ export default function Footer({
             <p className="mt-5 max-w-xs font-body text-sm leading-relaxed text-ivory/60">
               {dict.footer.description}
             </p>
-
-            <div className="mt-8">
-              <p className="font-body text-[11px] uppercase tracking-wider2 text-ivory/40">
-                {dict.footer.socialTitle}
-              </p>
-              <ul className="mt-3 flex flex-wrap gap-4">
-                {socialPlaceholders.map((s) => (
-                  <li key={s}>
-                    <a
-                      href="#"
-                      className="font-body text-sm text-ivory/60 underline-offset-4 transition-colors hover:text-ivory hover:underline"
-                    >
-                      {s}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8 md:col-span-4">
