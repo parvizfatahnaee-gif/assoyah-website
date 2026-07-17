@@ -7,7 +7,7 @@ import FadeIn from "@/components/FadeIn";
 export default function ContactPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { contact } = dict;
+  const { contact, company } = dict;
 
   const inputClass =
     "w-full border-b border-charcoal/25 bg-transparent py-3 font-body text-[15px] text-charcoal placeholder:text-stone/50 focus:border-terracotta focus:outline-none";
@@ -111,7 +111,7 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
                 {contact.detailsLocation}
               </p>
               <div className="mt-8 space-y-1 font-body text-sm text-charcoal/80">
-                <p>contact@assoyah.com</p>
+                <p>{company.email}</p>
               </div>
             </FadeIn>
           </div>
