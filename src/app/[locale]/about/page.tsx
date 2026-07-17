@@ -1,16 +1,32 @@
 import { isLocale, defaultLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/getDictionary";
+import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
 import Eyebrow from "@/components/Eyebrow";
 import FadeIn from "@/components/FadeIn";
 import StitchDivider from "@/components/StitchDivider";
 import ImagePlaceholder from "@/components/ImagePlaceholder";
 import CtaBanner from "@/components/CtaBanner";
+import Leadership from "@/components/Leadership";
+import CorporateIdentity from "@/components/CorporateIdentity";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
+  const dict = getDictionary(locale);
+  return {
+    title: `${dict.about.heroTitle} — ${dict.meta.siteName}`,
+    description: dict.about.heroSub,
+  };
+}
 
 export default function AboutPage({ params }: { params: { locale: string } }) {
   const locale: Locale = isLocale(params.locale) ? params.locale : defaultLocale;
   const dict = getDictionary(locale);
-  const { about } = dict;
+  const { about, company } = dict;
 
   const values = [
     { title: about.value1Title, body: about.value1Body },
@@ -104,6 +120,49 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
           </div>
         </div>
       </section>
+
+      <StitchDivider className="pb-20 md:pb-28" />
+
+      <Leadership
+        eyebrow={about.leadershipEyebrow}
+        title={about.leadershipTitle}
+        intro={about.leadershipIntro}
+        managingDirector={{
+          name: company.managingDirectorName,
+          roleList: about.mdRoleList,
+          bio: about.mdBio,
+          message: about.mdMessage,
+          messageLabel: about.mdMessageLabel,
+          photo: "/images/leadership/managing-director.jpg",
+        }}
+        commercialManager={{
+          name: company.commercialManagerName,
+          roleList: about.cmRoleList,
+          bio: about.cmBio,
+          message: about.cmMessage,
+          messageLabel: about.cmMessageLabel,
+          photo: "/images/leadership/commercial-manager.jpg",
+        }}
+        sharedVisionTitle={about.sharedVisionTitle}
+        sharedVisionBody={about.sharedVisionBody}
+      />
+
+      <CorporateIdentity
+        eyebrow={about.corpIdentityEyebrow}
+        title={about.corpIdentityTitle}
+        intro={about.corpIdentityIntro}
+        fields={[
+          { label: about.corpFieldEntity, value: company.legalName },
+          {
+            label: about.corpFieldLeadership,
+            value: `${company.managingDirectorName} (${company.managingDirectorRole}) — ${company.commercialManagerName} (${company.commercialManagerRole})`,
+          },
+          { label: about.corpFieldAddress, value: `${company.addressLine1}, ${company.addressLine2}` },
+          { label: about.corpFieldRCCM, value: company.rccm },
+          { label: about.corpFieldIDU, value: company.idu },
+          { label: about.corpFieldContact, value: `${company.email} — ${company.phone}` },
+        ]}
+      />
 
       <CtaBanner
         title={about.ctaTitle}
