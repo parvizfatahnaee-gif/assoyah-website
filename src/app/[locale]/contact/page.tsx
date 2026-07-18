@@ -110,8 +110,27 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
               <p className="mt-2 font-body text-sm text-stone">
                 {contact.detailsLocation}
               </p>
-              <div className="mt-8 space-y-1 font-body text-sm text-charcoal/80">
-                <p>{company.email}</p>
+              <div className="mt-8 space-y-3 font-body text-sm text-charcoal/80">
+                <a
+                  href={`mailto:${company.email}`}
+                  className="block transition-colors hover:text-terracotta"
+                >
+                  {company.email}
+                </a>
+                <a
+                  href={`tel:${company.phoneHref}`}
+                  className="block transition-colors hover:text-terracotta"
+                >
+                  {company.phone}
+                </a>
+                <a
+                  href={`https://wa.me/${company.whatsappHref}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition-colors hover:text-terracotta"
+                >
+                  WhatsApp
+                </a>
               </div>
             </FadeIn>
           </div>
