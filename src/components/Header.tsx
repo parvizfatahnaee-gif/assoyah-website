@@ -57,7 +57,7 @@ export default function Header({
           ASSOYAH
         </Link>
 
-        <nav className="hidden items-center gap-5 xl:flex xl:gap-6" aria-label="Primary">
+        <nav className="hidden items-center gap-5 2xl:flex xl:gap-6" aria-label="Primary">
           {links.map((link) => {
             const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -77,14 +77,14 @@ export default function Header({
           })}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-4 xl:flex">
+        <div className="hidden shrink-0 items-center gap-4 2xl:flex">
           <LanguageSwitch locale={locale} />
           <Button href={`/${locale}/contact`} variant="primary">
             {dict.nav.requestConsultation}
           </Button>
         </div>
 
-        <div className="flex items-center gap-3 xl:hidden">
+        <div className="flex items-center gap-3 2xl:hidden">
           <LanguageSwitch locale={locale} />
           <MobileNav locale={locale} dict={dict} />
         </div>
