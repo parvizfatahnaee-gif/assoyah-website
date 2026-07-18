@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Portrait({
   src,
   alt,
-  ratio = "aspect-[4/5]",
+  ratio = "aspect-[3/4]",
   tone = "beige",
   priority = false,
 }: {
@@ -22,14 +22,14 @@ export default function Portrait({
 
   return (
     <div
-      className={`relative ${ratio} w-full overflow-hidden rounded-sm border ${toneClasses}`}
+      className={`relative ${ratio} w-full max-w-[280px] overflow-hidden rounded-sm border ${toneClasses}`}
     >
       <Image
         src={src}
         alt={alt}
         fill
         priority={priority}
-        sizes="(min-width: 1024px) 40vw, 90vw"
+        sizes="280px"
         className="object-cover"
       />
     </div>
