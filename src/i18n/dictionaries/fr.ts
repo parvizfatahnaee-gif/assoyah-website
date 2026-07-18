@@ -173,9 +173,9 @@ const fr = {
     mdMessageLabel: "Message de la Directrice Générale",
     mdMessage:
       "Chaque pièce que nous créons porte une conversation entre l'héritage dont je viens et le monde vers lequel je regarde. ASSOYAH existe pour prouver que le savoir-faire africain peut répondre aux plus hautes exigences internationales — sans compromis.",
-    cmRoleList: ["Directeur Commercial", "Développement des Affaires Internationales"],
+    cmRoleList: ["Directeur Commercial Exécutif", "Directeur du Commerce International et du Développement des Affaires"],
     cmBio:
-      "Parviz Fatahnaee dirige la stratégie commerciale et le développement des affaires internationales d'ASSOYAH. Il est responsable de la construction des partenariats, des canaux de distribution et des relations d'entreprise qui portent les créations et la capacité de production de la maison au-delà de la Côte d'Ivoire, vers des clients et partenaires dans la région et à l'international.",
+      "Parviz Fatahnaee est Directeur Commercial Exécutif et Directeur du Commerce International et du Développement des Affaires chez ASSOYAH SARL. Il dirige la stratégie commerciale internationale de l'entreprise, le développement des exportations, les opérations commerciales et les partenariats mondiaux. Fort de plus de 30 ans d'expérience en direction exécutive, il a bâti une carrière étendue dans le commerce international, la gestion commerciale, la direction des ventes et la gestion de grands projets de construction en Iran et en Fédération de Russie. Il est titulaire d'un Doctorat en Administration des Affaires (DBA) de l'Université de Téhéran.",
     cmMessageLabel: "Message du Directeur Commercial",
     cmMessage:
       "Notre ambition dépasse une seule collection ou un seul client. Nous construisons des partenariats durables — avec des clients corporate, des distributeurs et des industriels — fondés sur la qualité et la rigueur qui font la réputation de cette maison.",
