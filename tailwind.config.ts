@@ -26,7 +26,7 @@ const config: Config = {
         wider3: "0.28em",
       },
       maxWidth: {
-        content: "1400px",
+        content: "1200px",
       },
       transitionTimingFunction: {
         editorial: "cubic-bezier(0.22, 1, 0.36, 1)",
