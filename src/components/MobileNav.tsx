@@ -54,8 +54,7 @@ export default function MobileNav({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
-  return (
-    <div className="md:hidden">
+  return (<div>
       <button
         aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
