@@ -172,7 +172,7 @@ const en = {
     mdMessageLabel: "A Message from the Managing Director",
     mdMessage:
       "Every piece we create carries a conversation between the heritage I come from and the world I look toward. ASSOYAH exists to prove that African craftsmanship can meet the highest international standard — without compromise.",
-    cmRoleList: ["Commercial Manager", "International Business Development"],
+    cmRoleList: ["Executive Commercial Director", "Director of International Trade & Business Development"],
     cmBio:
       "Parviz Fatahnaee leads ASSOYAH's commercial strategy and international business development. He is responsible for building the partnerships, distribution channels and corporate relationships that carry the house's creations and manufacturing capability beyond Côte d'Ivoire, to clients and partners across the region and abroad.",
     cmMessageLabel: "A Message from the Commercial Manager",
